@@ -1,9 +1,9 @@
 ## crear una clase "Cuadrado" que tenga como argumento el lado, 
 ## obtener el perimetro y el area del cuadrado
 import math
-from cuadrados import Cuadrado
-from rectangulo import Rectangulo
-from circulo import Circulo
+from figuras.cuadrados import Cuadrado
+from figuras.rectangulo import Rectangulo
+from figuras.circulo import Circulo
 
 def mostrar(figura):
     print(f"Area: {figura.area()}")
