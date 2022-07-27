@@ -1,43 +1,13 @@
 ## crear una clase "Cuadrado" que tenga como argumento el lado, 
 ## obtener el perimetro y el area del cuadrado
 import math
+from cuadrados import Cuadrado
+from rectangulo import Rectangulo
+from circulo import Circulo
 
 def mostrar(figura):
     print(f"Area: {figura.area()}")
     print(f"Perimetro: {figura.perimetro()}")
-
-class Cuadrado():
-    ## inicializar el cuadrado
-    def __init__(self, lado):
-        self.lado = lado
-
-    def area(self):
-        return self.lado * self.lado
-    
-    def perimetro(self):
-        return self.lado * 4      
-
-class Rectangulo():
-    def __init__(self,largo,ancho):
-        self.largo=largo
-        self.ancho=ancho
-    
-    def area(self):
-        return self.largo*self.ancho 
-    
-    def perimetro(self):
-        return self.largo*2 + self.ancho*2
-
-class Circulo():
-    def __init__(self, radio):
-        self.radio = radio
-    
-    def area(self):
-        return self.radio * self.radio * math.pi
-    
-    def perimetro(self):
-        return 2 * math.pi * self.radio
-
 
 continuar = True
 while continuar:
