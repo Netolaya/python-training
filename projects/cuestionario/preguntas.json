@@ -1,0 +1,32 @@
+[
+    {
+        "pregunta": "Donde fue el primer mundial",
+        "opciones": [
+            "Brazil",
+            "Mexico",
+            "Peru",
+            "Uruguay"
+        ],
+        "respuesta": "4"
+    },
+    {
+        "pregunta": "Quien es el maximo goleador de la seleccion peruana",
+        "opciones": [
+            "Lolo Fernandez",
+            "Lapadula",
+            "Guerrero",
+            "Uribe"
+        ],
+        "respuesta": "3"
+    },
+    {
+        "pregunta": "Quien gano la champions del 2022",
+        "opciones": [
+            "Liverpool",
+            "Manchester City",
+            "Real Madrid",
+            "Paris Saint German"
+        ],
+        "respuesta": "3"
+    }
+]
