@@ -2,6 +2,7 @@
 ## crear cuestionario
 ## actualizar un cuestionario
 ## eliminar cuestionario
+from archivos import escribir_archivo, abrir_archivo
 from utils import opcion_invalida, existe_cuestionario
 from os import remove
 import json
@@ -49,28 +50,19 @@ if opcion == "1":
             data.append(dict_pregunta)
             continuar= input("Desea agregar mas preguntas?: (S/N)").upper() == "S"
 
-        data = json.dumps(data, indent=4)
+        #data = json.dumps(data, indent=4)
 
         ## crear cuestionario
-        archivo_cuestionario = open(f"{nombre_cuestionario}.json", "w")
-        archivo_cuestionario.write(data)
-        archivo_cuestionario.close()
+        escribir_archivo(f"{nombre_cuestionario}.json", data)
         
-        ### 
-        #data = [nombre_cuestionario]
-        
-        cuestionarios = open("cuestionarios.json","r")
-        data = json.load(cuestionarios)
-        cuestionarios.close()
-        
-        cuestionarios = open("cuestionarios.json", "w")
+        data = abrir_archivo("cuestionarios.json")
         data.append(nombre_cuestionario)
-        data = json.dumps(data, indent=4)
-        cuestionarios.write(data)
-        cuestionarios.close()
+
+        escribir_archivo("cuestionarios.json",data)
 elif opcion == "2":
     ## actualizar cuestionario
     nombre_cuestionario = input("Que cuestionario desea actualizar: ")
+    # validacion
     archivo = open(f'{nombre_cuestionario}.json', 'r')
     data = json.load(archivo)
     archivo.close()
@@ -107,10 +99,9 @@ elif opcion == "2":
             }
             data.append(dict_pregunta)
             continuar= input("Desea agregar mas preguntas?: (S/N)").upper() == "S"
-        archivo = open(f'{nombre_cuestionario}.json', 'w')
-        data = json.dumps(data, indent=4)
-        archivo.write(data)
-        archivo.close()
+        
+        escribir_archivo(f'{nombre_cuestionario}.json',data)
+
     elif opcion == 2:
         for idx, pregunta in enumerate(data):
             print(f"[{idx+1}] {pregunta.get('pregunta')}")
@@ -121,28 +112,21 @@ elif opcion == "2":
             if ((idx + 1) != numero_pregunta):
                 nuevas_preguntas.append(pregunta)
         
-        archivo = open(f'{nombre_cuestionario}.json', 'w')
-        data = json.dumps(nuevas_preguntas, indent=4)
-        archivo.write(data)
-        archivo.close()
+        escribir_archivo(f'{nombre_cuestionario}.json',data)
 
-            
 elif opcion == "3":
     nombre_archivo = input("Ingrese el nombre del cuestionario que desea eliminar: ")
     remove(f'{nombre_archivo}.json')
-    archivo_cuestionario = open("cuestionarios.json", 'r')
-    data = json.load(archivo_cuestionario)
-    archivo_cuestionario.close()
+    data = abrir_archivo("cuestionarios.json")
+    
     def nuevos_cuestionarios(nombre):
         if nombre != nombre_archivo:
             return True
         return False
     
     nueva_data = list(filter(nuevos_cuestionarios, data))
-    cuestionarios = open("cuestionarios.json", "w")
-    nueva_data = json.dumps(nueva_data, indent=4)
-    cuestionarios.write(nueva_data)
-    cuestionarios.close()
+    escribir_archivo("cuestionarios.json",nueva_data)
+   
     
     
     
